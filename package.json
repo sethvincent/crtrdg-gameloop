@@ -1,0 +1,34 @@
+{
+  "name": "crtrdg-gameloop",
+  "version": "0.0.0",
+  "description": "gameloop module for crtrdg – canvas-based animation.",
+  "main": "index.js",
+  "scripts": {
+    "test": "beefy test.js:bundle.js --live"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sethvincent/crtrdg-gameloop.git"
+  },
+  "keywords": [
+    "games",
+    "html",
+    "canvas",
+    "animation",
+    "requestAnimationFrame",
+    "game library"
+  ],
+  "author": {
+    "name": "Seth Vincent",
+    "email": "sethvincent@gmail.com",
+    "url": "http://sethvincent.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "inherits": "~2.0.0",
+    "raf": "0.0.3"
+  },
+  "devDependencies": {
+    "tape": "~1.0.4"
+  }
+}
