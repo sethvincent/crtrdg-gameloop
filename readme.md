@@ -12,7 +12,8 @@
 
 ## Getting started
 Try it out on requirebin: [http://requirebin.com/?gist=5952933](http://requirebin.com/?gist=5952933)
-Install node if you haven't already.
+
+### Install node if you haven't already.
 
 ### Install browserify and beefy:
 ```
