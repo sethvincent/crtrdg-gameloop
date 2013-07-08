@@ -1,16 +1,3 @@
-var EventEmitter = require('events').EventEmitter;
-var emitter = new EventEmitter;
-
-emitter.on('pizza', function(message){
-  console.log(message);
-});
-
-emitter.emit('pizza', 'pizza is extremely yummy');
-
-
-
-
-/*
 var Game = require('./index');
 
 var game = new Game({
@@ -39,4 +26,3 @@ game.on('pause', function(){
 game.on('resume', function(){
   console.log('resumed');
 });
-*/

@@ -6,11 +6,6 @@
 - Create a gameloop that emits update and draw events.
 - Emit pause and resume events.
 
-## Purpose of `crtrdg`:
-Almost every javascript game / animation library I've found bundles things like requestAnimationFrame polyfill, gameloop, entities, abstract drawing methods, keyboard/mouse input, vector math, and more into one entangled library. If I don't like how the library handles just one of those 
-
-With inspiration from voxel.js, crtrdg is a collection of javascript modules used for developing 2d games. 
-
 ## Requirements
 - node.js
 - browserify / beefy
@@ -41,7 +36,7 @@ npm install -g browserify beefy
 
 ### Create a game.js file:
 ```
-var Game = require('./index');
+var Game = require('crtrdg-gameloop');
 
 // initialize the game with the canvas id of your game
 // the width, height, and default background color of the canvas
@@ -82,6 +77,13 @@ game.on('resume', function(){
   console.log('resumed');
 });
 ```
+
+## Purpose of `crtrdg`:
+Almost every javascript game / animation library I've found bundles things like requestAnimationFrame polyfill, gameloop, entities, abstract drawing methods, keyboard/mouse input, vector math, and more into one entangled library. If I don't like how the library handles just one of those 
+
+With inspiration from voxel.js, crtrdg is a collection of javascript modules used for developing 2d games.
+
+As I learned more about node.js, the core events module, and browserify, I realized the ideal api for making simple 2d games could be based on node's events module.
 
 ## Other `crtrdg` modules:
 - [crtrdg-entity](http://github.com/sethvincent/crtrdg-entity)
