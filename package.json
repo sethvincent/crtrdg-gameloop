@@ -27,8 +27,5 @@
   "dependencies": {
     "inherits": "~2.0.0",
     "raf": "0.0.3"
-  },
-  "devDependencies": {
-    "tape": "~1.0.4"
   }
 }

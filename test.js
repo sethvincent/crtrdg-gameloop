@@ -1,7 +1,7 @@
 var Game = require('./index');
 
 var game = new Game({
-  canvas: 'game',
+  canvasId: 'game',
   width: '800',
   height: '400',
   backgroundColor: '#ff1f1f'
