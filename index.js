@@ -49,12 +49,15 @@ Game.prototype.resume = function(){
 };
 
 Game.prototype.update = function(interval){
+  if (this.currentScene){
+    this.sceneManager.update(interval);
+  }
   this.emit('update', interval);
 };
 
 Game.prototype.draw = function(){
   if (this.currentScene){
-    this.sceneManager.drawCurrentScene();
+    this.sceneManager.draw(this.context);
   } else {
     this.context.fillStyle = this.backgroundColor;
   }
