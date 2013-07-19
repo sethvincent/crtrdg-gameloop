@@ -53,7 +53,11 @@ Game.prototype.update = function(interval){
 };
 
 Game.prototype.draw = function(){
-  this.context.fillStyle = this.backgroundColor;
+  if (this.currentScene){
+    this.sceneManager.drawCurrentScene();
+  } else {
+    this.context.fillStyle = this.backgroundColor;
+  }
   this.context.fillRect(0, 0, this.width, this.height);
   this.emit('draw', this.context)
 };
