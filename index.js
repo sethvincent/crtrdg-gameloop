@@ -57,7 +57,9 @@ Game.prototype.update = function(interval){
 
 Game.prototype.draw = function(){
   if (this.currentScene){
+    this.context.fillStyle = this.currentScene.backgroundColor;
     this.sceneManager.draw(this.context);
+
   } else {
     this.context.fillStyle = this.backgroundColor;
   }
