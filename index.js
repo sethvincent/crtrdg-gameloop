@@ -11,6 +11,7 @@ function Game(options){
   this.width = this.canvas.width = options.width;
   this.height = this.canvas.height = options.height;
   this.backgroundColor = options.backgroundColor;
+  this.paused = false;
 
   if (options.maxListeners){
     this.setMaxListeners(options.maxListeners);
@@ -32,13 +33,15 @@ Game.prototype.loop = function(){
 };
 
 Game.prototype.pause = function(){
+  this.paused = true;
   this.ticker.pause();
   this.emit('pause');
 };
 
 Game.prototype.resume = function(){
   var self = this;
-
+  
+  this.paused = false;
   this.ticker = requestAnimationFrame(this.canvas);
   this.ticker.on('data', function(interval) {
     self.update(interval);
