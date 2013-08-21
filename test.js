@@ -1,4 +1,5 @@
 var Game = require('./index');
+var Mouse = require('crtrdg-mouse');
 
 var game = new Game({
   canvasId: 'game',
@@ -7,16 +8,60 @@ var game = new Game({
   backgroundColor: '#ff1f1f'
 });
 
+var mouse = new Mouse(game);
+
+var clicked = false;
+mouse.on('click', function(){
+  console.log('clicked')
+  if (clicked){
+    game.resume();
+    clicked = false;
+  } else {
+    game.pause();
+    clicked = true;
+  }
+});
+
+var box = {
+  size: { x: 10, y: 10 },
+  position: { x: game.width / 2 - 5, y: game.height / 2 - 5 }
+}
+
+box.update = function(){
+  box.position.x += rand(-3,3);
+  box.position.y += rand(-3,3);
+}
+
+box.boundaries = function(){
+  if (box.position.x <= 0){
+    box.position.x = 0;
+  }
+
+  if (box.position.x >= game.width - box.size.x){
+    box.position.x = game.width - box.size.x;
+  }
+
+  if (box.position.y <= 0){
+    box.position.y = 0;
+  }
+
+  if (box.position.y >= game.height - box.size.y){
+    box.position.y = game.height - box.size.y;
+  }
+}
+
+box.draw = function(context){
+  context.fillStyle = '#fff';
+  context.fillRect(box.position.x, box.position.y, box.size.x, box.size.y);
+}
+
 game.on('update', function(interval){
-  console.log('update', interval);
-  game.pause();
-  game.resume();
+  box.update();
+  box.boundaries();
 });
 
 game.on('draw', function(context){
-  console.log('draw', context);
-  context.fillStyle = '#fff';
-  context.fillRect(10, 10, 10, 10);
+  box.draw(context);
 });
 
 game.on('pause', function(){
@@ -26,3 +71,7 @@ game.on('pause', function(){
 game.on('resume', function(){
   console.log('resumed');
 });
+
+function rand(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}

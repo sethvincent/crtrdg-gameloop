@@ -27,5 +27,8 @@
   "dependencies": {
     "inherits": "~2.0.0",
     "raf": "0.0.3"
+  },
+  "devDependencies": {
+    "crtrdg-mouse": "0.0.1"
   }
 }
