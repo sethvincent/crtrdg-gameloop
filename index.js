@@ -11,6 +11,8 @@ function Game(options){
   this.width = this.canvas.width = options.width;
   this.height = this.canvas.height = options.height;
   this.backgroundColor = options.backgroundColor;
+
+  this.ticker = requestAnimationFrame(this.canvas);
   this.paused = false;
 
   if (options.maxListeners){
@@ -25,7 +27,6 @@ function Game(options){
 Game.prototype.loop = function(){
   var self = this;
 
-  this.ticker = requestAnimationFrame(this.canvas);
   this.ticker.on('data', function(interval) {
     self.update(interval);
     self.draw();
