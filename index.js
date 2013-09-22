@@ -6,7 +6,8 @@ module.exports = Game;
 inherits(Game, EventEmitter);
 
 function Game(options){
-
+  var options = options || {};
+  
   if (!options.canvas){
     this.canvas = document.createElement('canvas');
     this.canvas.id = 'game';
@@ -18,9 +19,9 @@ function Game(options){
   }
 
   this.context = this.canvas.getContext('2d');
-  this.width = this.canvas.width = options.width;
-  this.height = this.canvas.height = options.height;
-  this.backgroundColor = options.backgroundColor;
+  this.width = this.canvas.width = options.width || window.innerWidth;
+  this.height = this.canvas.height = options.height || window.innerHeight;
+  this.backgroundColor = options.backgroundColor || '#E187B8';
 
   this.ticker = requestAnimationFrame(this.canvas);
   this.paused = false;

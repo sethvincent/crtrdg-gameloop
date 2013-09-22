@@ -1,11 +1,7 @@
 var Game = require('./index');
 var Mouse = require('crtrdg-mouse');
 
-var game = new Game({
-  width: '800',
-  height: '400',
-  backgroundColor: '#ff1f1f'
-});
+var game = new Game();
 
 var mouse = new Mouse(game);
 
