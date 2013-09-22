@@ -6,7 +6,17 @@ module.exports = Game;
 inherits(Game, EventEmitter);
 
 function Game(options){
-  this.canvas = document.getElementById(options.canvasId);
+
+  if (!options.canvas){
+    this.canvas = document.createElement('canvas');
+    this.canvas.id = 'game';
+    document.body.appendChild(this.canvas);
+  } else if (typeof options.canvas === 'string'){
+    this.canvas = document.getElementById(options.canvas);
+  } else if (typeof options.canvas === 'object' && options.canvas.tagName) {
+    this.canvas = options.canvas
+  }
+
   this.context = this.canvas.getContext('2d');
   this.width = this.canvas.width = options.width;
   this.height = this.canvas.height = options.height;

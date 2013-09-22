@@ -2,7 +2,6 @@ var Game = require('./index');
 var Mouse = require('crtrdg-mouse');
 
 var game = new Game({
-  canvasId: 'game',
   width: '800',
   height: '400',
   backgroundColor: '#ff1f1f'
@@ -12,7 +11,6 @@ var mouse = new Mouse(game);
 
 var clicked = false;
 mouse.on('click', function(){
-  console.log('clicked')
   if (clicked){
     game.resume();
     clicked = false;
