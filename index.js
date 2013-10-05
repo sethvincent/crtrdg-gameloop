@@ -7,6 +7,9 @@ inherits(Game, EventEmitter);
 
 function Game(options){
   var options = options || {};
+
+  EventEmitter.call(this);
+  var self = this;
   
   if (!options.canvas){
     this.canvas = document.createElement('canvas');
@@ -32,10 +35,14 @@ function Game(options){
     this.setMaxListeners(0);
   }
 
-  this.loop();
+  window.addEventListener('load', function(){
+    self.emit('start');
+  })
+
+  this.start();
 }
 
-Game.prototype.loop = function(){
+Game.prototype.start = function(){
   var self = this;
 
   this.ticker.on('data', function(interval) {
@@ -74,7 +81,6 @@ Game.prototype.draw = function(){
   if (this.currentScene){
     this.context.fillStyle = this.currentScene.backgroundColor;
     this.sceneManager.draw(this.context);
-
   } else {
     this.context.fillStyle = this.backgroundColor;
   }

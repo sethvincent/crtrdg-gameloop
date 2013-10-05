@@ -2,7 +2,6 @@ var Game = require('./index');
 var Mouse = require('crtrdg-mouse');
 
 var game = new Game();
-
 var mouse = new Mouse(game);
 
 var clicked = false;
@@ -48,6 +47,10 @@ box.draw = function(context){
   context.fillStyle = '#fff';
   context.fillRect(box.position.x, box.position.y, box.size.x, box.size.y);
 }
+
+game.on('start', function(){
+  console.log('started');
+});
 
 game.on('update', function(interval){
   box.update();
