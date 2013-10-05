@@ -36,15 +36,13 @@ function Game(options){
   }
 
   window.addEventListener('load', function(){
-    self.emit('start');
-  })
-
-  this.start();
+    self.start();
+  });
 }
 
 Game.prototype.start = function(){
   var self = this;
-
+  this.emit('start');
   this.ticker.on('data', function(interval) {
     self.update(interval);
     self.draw();
