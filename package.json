@@ -1,6 +1,6 @@
 {
   "name": "crtrdg-gameloop",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "gameloop module for crtrdg – canvas-based animation.",
   "main": "index.js",
   "scripts": {
