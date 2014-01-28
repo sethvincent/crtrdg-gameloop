@@ -76,13 +76,7 @@ Game.prototype.update = function(interval){
 };
 
 Game.prototype.draw = function(){
-  if (this.currentScene){
-    this.context.fillStyle = this.currentScene.backgroundColor;
-    this.sceneManager.draw(this.context);
-  } else {
-    this.context.fillStyle = this.backgroundColor;
-  }
-  this.context.fillRect(0, 0, this.width, this.height);
+  this.context.clearRect(0, 0, this.width, this.height);
   this.emit('draw-background', this.context);
   this.emit('draw', this.context);
   this.emit('draw-foreground', this.context);
