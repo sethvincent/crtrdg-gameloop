@@ -69,9 +69,6 @@ Game.prototype.resume = function(){
 };
 
 Game.prototype.update = function(interval){
-  if (this.currentScene){
-    this.sceneManager.update(interval);
-  }
   this.emit('update', interval);
 };
 
