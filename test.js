@@ -58,6 +58,8 @@ game.on('update', function(interval){
 });
 
 game.on('draw', function(context){
+  context.fillStyle = '#f4d3a2';
+  context.fillRect(0, 0, game.width, game.height);
   box.draw(context);
 });
 

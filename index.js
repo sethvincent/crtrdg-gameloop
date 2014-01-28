@@ -24,16 +24,12 @@ function Game(options){
   this.context = this.canvas.getContext('2d');
   this.width = this.canvas.width = options.width || window.innerWidth;
   this.height = this.canvas.height = options.height || window.innerHeight;
-  this.backgroundColor = options.backgroundColor || '#E187B8';
 
   this.ticker = requestAnimationFrame(this.canvas);
   this.paused = false;
 
-  if (options.maxListeners){
-    this.setMaxListeners(options.maxListeners);
-  } else {
-    this.setMaxListeners(0);
-  }
+  if (options.maxListeners) this.setMaxListeners(options.maxListeners);
+  else this.setMaxListeners(0);
 
   window.addEventListener('load', function(){
     self.start();
