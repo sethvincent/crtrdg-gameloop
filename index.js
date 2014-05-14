@@ -1,6 +1,7 @@
 var EventEmitter = require('events').EventEmitter;
 var requestAnimationFrame = require('raf');
 var inherits = require('inherits');
+var util = require('util');
 
 module.exports = Game;
 inherits(Game, EventEmitter);
@@ -71,6 +72,20 @@ Game.prototype.update = function(interval){
 Game.prototype.draw = function(){
   this.context.clearRect(0, 0, this.width, this.height);
   this.emit('draw-background', this.context);
-  this.emit('draw', this.context);
+  this.drawAllLayers();
   this.emit('draw-foreground', this.context);
 };
+
+Game.prototype.drawAllLayers = function(){
+  if (util.isArray(this.layers)) {
+    for (var i=0; i<this.layers.length; i++) {
+      this.emit('draw-layer', this.layers[i], this.context);
+      if (this.layers[i] === 0) {
+        // anything not using layers should draw in the default plane
+        this.emit('draw', this.context);
+      }
+    }
+  } else {
+    this.emit('draw', this.context);
+  }
+}
