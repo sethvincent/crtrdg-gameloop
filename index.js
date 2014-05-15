@@ -1,5 +1,5 @@
 var EventEmitter = require('events').EventEmitter;
-var requestAnimationFrame = require('raf');
+var requestAnimationFrame = require('raf-stream');
 var inherits = require('inherits');
 var util = require('util');
 
