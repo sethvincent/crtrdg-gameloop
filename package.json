@@ -4,7 +4,8 @@
   "description": "gameloop module for crtrdg – canvas-based animation.",
   "main": "index.js",
   "scripts": {
-    "test": "beefy test.js:bundle.js --live"
+    "start": "beefy example.js:bundle.js --live",
+    "test": "browserify test.js | testling"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     "raf-stream": "^1.0.0"
   },
   "devDependencies": {
-    "crtrdg-mouse": "0.0.1"
+    "crtrdg-mouse": "0.0.1",
+    "tape": "^2.13.1"
   }
 }

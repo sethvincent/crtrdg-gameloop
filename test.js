@@ -1,76 +1,73 @@
 var Game = require('./index');
-var Mouse = require('crtrdg-mouse');
+var test = require('tape');
 
-var game = new Game();
-var mouse = new Mouse(game);
+test('Game', function (t) {
+    t.test('start: should fire the start event', function (t) {
+      t.plan(1);
+      var game = new Game();
+      game.on('start', function () {
+        t.pass('start event fired');
+      });
+      game.start();
+    });
 
-var clicked = false;
-mouse.on('click', function(){
-  if (clicked){
-    game.resume();
-    clicked = false;
-  } else {
-    game.pause();
-    clicked = true;
-  }
+    t.test('pause: should pause game loop and fire event', function (t) {
+      t.plan(3);
+      var game = new Game();
+      game.on('pause', function () {
+        t.pass('pause event fired');
+      });
+      game.pause();
+      t.ok(game.paused, 'game paused');
+      t.ok(game.ticker.paused, 'ticker paused');
+    });
+
+    t.test('resume: should make the gameloop resume', function (t) {
+      t.plan(3);
+      var game = new Game();
+      game.pause();
+      game.on('resume', function () {
+        t.pass('resume event fired');
+      });
+      game.resume();
+      t.ok(!game.paused, 'game resumed')
+      t.ok(!game.ticker.paused, 'ticker running');
+    });
+
+    t.test('update: should fire update event', function (t) {
+      t.plan(1);
+      var game = new Game();
+      game.start();
+      game.on('update', function (interval) {
+        t.pass('update fired once');
+        game.pause(); // only once
+      })
+    });
+
+    t.test('draw: should fire events', function (t) {
+      t.plan(3);
+      var game = new Game();
+      game.on('draw-background', function () {
+        t.pass('draw-background event fired');
+      });
+      game.on('draw-foreground', function () {
+        t.pass('draw-foreground event fired');
+      });
+      game.on('draw', function () {
+        t.pass('draw event fired');
+      });
+      game.draw();
+    });
+    
+    t.test('drawAllLayers: draw all layers in correct order', function (t) {
+      var game = new Game();
+      game.layers = [1,2,6,8];
+      t.plan(4);
+      var i = 0;
+      game.on('draw-layer', function (layer, context) {
+        t.ok(layer === game.layers[i], 'shoud fire 4 times');
+        i++;
+      });
+      game.drawAllLayers();
+    });
 });
-
-var box = {
-  size: { x: 10, y: 10 },
-  position: { x: game.width / 2 - 5, y: game.height / 2 - 5 }
-}
-
-box.update = function(){
-  box.position.x += rand(-3,3);
-  box.position.y += rand(-3,3);
-}
-
-box.boundaries = function(){
-  if (box.position.x <= 0){
-    box.position.x = 0;
-  }
-
-  if (box.position.x >= game.width - box.size.x){
-    box.position.x = game.width - box.size.x;
-  }
-
-  if (box.position.y <= 0){
-    box.position.y = 0;
-  }
-
-  if (box.position.y >= game.height - box.size.y){
-    box.position.y = game.height - box.size.y;
-  }
-}
-
-box.draw = function(context){
-  context.fillStyle = '#fff';
-  context.fillRect(box.position.x, box.position.y, box.size.x, box.size.y);
-}
-
-game.on('start', function(){
-  console.log('started');
-});
-
-game.on('update', function(interval){
-  box.update();
-  box.boundaries();
-});
-
-game.on('draw', function(context){
-  context.fillStyle = '#f4d3a2';
-  context.fillRect(0, 0, game.width, game.height);
-  box.draw(context);
-});
-
-game.on('pause', function(){
-  console.log('paused');
-});
-
-game.on('resume', function(){
-  console.log('resumed');
-});
-
-function rand(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
