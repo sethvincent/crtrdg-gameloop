@@ -1,6 +1,9 @@
 # crtrdg gameloop
 > canvas animation using requestAnimationFrame
 
+[![browser support](https://ci.testling.com/sethvincent/crtrdg-gameloop)
+](https://ci.testling.com/sethvincent/crtrdg-gameloop)
+
 ## Goals for the crtrdg gameloop:
 - Initialize 2d canvas and animate using requestAnimationFrame.
 - Create a gameloop that emits update and draw events.
