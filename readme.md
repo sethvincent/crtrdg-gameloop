@@ -1,7 +1,7 @@
 # crtrdg gameloop
 > canvas animation using requestAnimationFrame
 
-[![browser support](https://ci.testling.com/sethvincent/crtrdg-gameloop)
+[![browser support](https://ci.testling.com/sethvincent/crtrdg-gameloop.png)
 ](https://ci.testling.com/sethvincent/crtrdg-gameloop)
 
 ## Goals for the crtrdg gameloop:
@@ -84,7 +84,7 @@ game.on('resume', function(){
 ```
 
 ## Purpose of `crtrdg`:
-Almost every javascript game / animation library I've found bundles things like requestAnimationFrame polyfill, gameloop, entities, abstract drawing methods, keyboard/mouse input, vector math, and more into one entangled library. If I don't like how the library handles just one of those 
+Almost every javascript game / animation library I've found bundles things like requestAnimationFrame polyfill, gameloop, entities, abstract drawing methods, keyboard/mouse input, vector math, and more into one entangled library. If I don't like how the library handles just one of those
 
 With inspiration from voxel.js, crtrdg is a collection of javascript modules used for developing 2d games.
 
