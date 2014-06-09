@@ -46,7 +46,7 @@ var Game = require('crtrdg-gameloop');
 // initialize the game with the canvas id of your game
 // the width, height, and default background color of the canvas
 var game = new Game({
-  canvasId: 'game',
+  canvas: 'game',
   width: '800',
   height: '400',
   backgroundColor: '#ff1f1f'
