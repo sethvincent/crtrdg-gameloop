@@ -48,8 +48,7 @@ var Game = require('crtrdg-gameloop');
 var game = new Game({
   canvas: 'game',
   width: '800',
-  height: '400',
-  backgroundColor: '#ff1f1f'
+  height: '400'
 });
 
 // every time through the loop, the `update` event will be emitted,
@@ -63,9 +62,8 @@ game.on('update', function(interval){
 // context is the canvas context, and you can use it to draw on the canvas like usual.
 // listen for the `draw` event like this:
 game.on('draw', function(context){
-  console.log('draw', context);
   context.fillStyle = '#fff';
-  context.fillRect(10, 10, 10, 10);
+  context.fillRect(0, 0, game.width, game.height);
 });
 
 // if game.pause() is called somewhere in your code,
