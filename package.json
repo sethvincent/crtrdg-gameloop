@@ -30,7 +30,8 @@
     "canvas",
     "animation",
     "requestAnimationFrame",
-    "game library"
+    "game library",
+    "crtrdg"
   ],
   "author": {
     "name": "Seth Vincent",
