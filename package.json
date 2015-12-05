@@ -41,7 +41,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "gameloop-canvas": "^1.0.0",
+    "gameloop-canvas": "^1.1.0",
     "isarray": "0.0.1"
   },
   "devDependencies": {
