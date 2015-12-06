@@ -27,11 +27,11 @@ module.exports = function createGame (options) {
   game.draw = function crtrdg_gameloop_draw (context, delta) {
     context.clearRect(0, 0, game.width, game.height)
     game.emit('draw-background', context, delta)
-    drawAllLayers(context, delta)
+    game.drawAllLayers(context, delta)
     game.emit('draw-foreground', context, delta)
   }
 
-  function drawAllLayers (context, dt) {
+  game.drawAllLayers = function crtrdg_gameloop_drawAllLayers (context, dt) {
     if (game.layers && isarray(game.layers)) {
       for (var i = 0; i < game.layers.length; i++) {
         game.emit('draw-layer', game.layers[i], context, dt)
