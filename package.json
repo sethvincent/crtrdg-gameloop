@@ -1,6 +1,6 @@
 {
   "name": "crtrdg-gameloop",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "gameloop module for crtrdg – canvas-based animation.",
   "main": "index.js",
   "scripts": {
@@ -41,13 +41,14 @@
   },
   "license": "MIT",
   "dependencies": {
-    "gameloop-canvas": "^1.1.1",
+    "gameloop-canvas": "^1.1.2",
     "isarray": "0.0.1"
   },
   "devDependencies": {
     "browserify": "^12.0.1",
     "budo": "^7.0.2",
-    "crtrdg-mouse": "0.0.1",
+    "crtrdg-keyboard": "^1.0.1",
+    "crtrdg-mouse": "1.0.0",
     "documentation-readme": "^2.1.1",
     "tape": "^2.13.1"
   }
